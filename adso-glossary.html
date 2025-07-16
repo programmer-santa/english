@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADSO Glossary - Jhon Santamaria</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Navigation -->
+        <nav class="nav">
+            <a href="index.html"><i class="fas fa-arrow-left"></i> Back to Home</a>
+            <a href="index.html"><i class="fas fa-home"></i> Home</a>
+        </nav>
+
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <i class="fas fa-book header-icon"></i>
+                <h1>ADSO Glossary</h1>
+            </div>
+            <p class="subtitle">Essential programming terms for software development students</p>
+        </header>
+
+        <!-- Content -->
+        <div class="card">
+            <h2><i class="fas fa-book-open"></i> ADSO Programming Glossary</h2>
+            <div class="about-content">
+                <p>This glossary contains essential programming terms that every ADSO (Análisis y Desarrollo de Software) student should know. These definitions will help you understand key concepts in software development and programming.</p>
+                <p>Each term is carefully selected to provide a solid foundation for understanding modern software development practices and technologies.</p>
+            </div>
+
+            <!-- Spelling Wheel Game -->
+            <div class="game-container">
+                <div class="game-title">
+                    <h3>🎯 Spelling Wheel Game</h3>
+                    <p>Spin the wheel and spell the programming term correctly!</p>
+                </div>
+
+                <!-- Score Display -->
+                <div class="score-display">
+                    <div class="score-item score-correct">
+                        <i class="fas fa-check"></i>
+                        <span>Correct: <span id="correct-score">0</span></span>
+                    </div>
+                    <div class="score-item score-incorrect">
+                        <i class="fas fa-times"></i>
+                        <span>Incorrect: <span id="incorrect-score">0</span></span>
+                    </div>
+                    <div class="score-item score-total">
+                        <i class="fas fa-trophy"></i>
+                        <span>Total: <span id="total-score">0</span></span>
+                    </div>
+                </div>
+
+                <!-- Spinning Wheel -->
+                <div class="wheel-container">
+                    <div class="wheel" id="spinning-wheel">
+                        <div class="wheel-content">
+                            <i class="fas fa-book"></i>
+                            <div>ADSO</div>
+                            <div style="font-size: 0.8rem;">Glossary</div>
+                        </div>
+                    </div>
+                    <div class="wheel-pointer"></div>
+                </div>
+
+                <!-- Game Controls -->
+                <div class="game-controls">
+                    <button class="btn-spin" id="spin-btn" onclick="spinWheel()">
+                        <i class="fas fa-play"></i>
+                        Spin the Wheel!
+                    </button>
+
+                    <div id="game-area" class="hidden">
+                        <div class="current-term">
+                            <h4>Spell this term:</h4>
+                            <div class="term-word" id="current-word"></div>
+                            <p class="term-definition" id="current-definition"></p>
+                        </div>
+
+                        <input type="text" class="spelling-input" id="user-spelling" placeholder="Type your spelling here..." />
+
+                        <div class="game-buttons">
+                            <button class="btn-correct" onclick="markCorrect()">
+                                <i class="fas fa-check"></i>
+                                Correct
+                            </button>
+                            <button class="btn-incorrect" onclick="markIncorrect()">
+                                <i class="fas fa-times"></i>
+                                Incorrect
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="result-area" class="hidden">
+                        <div class="result-display">
+                            <div style="font-size: 2rem; margin-bottom: 0.5rem;" id="result-emoji">🎉</div>
+                            <h4>The correct spelling is:</h4>
+                            <div class="term-word" id="correct-spelling"></div>
+                            <div style="font-size: 0.9rem; color: #6b7280; margin-top: 0.5rem;">
+                                Your spelling: "<span id="user-answer"></span>"
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="btn-reset" onclick="resetGame()">
+                        <i class="fas fa-redo"></i>
+                        Reset Game
+                    </button>
+                </div>
+
+                <!-- Game Instructions -->
+                <div class="game-instructions">
+                    <h4>How to Play:</h4>
+                    <ol>
+                        <li>Click "Spin the Wheel!" to get a random programming term</li>
+                        <li>Read the definition and try to spell the term correctly</li>
+                        <li>Type your spelling in the input field</li>
+                        <li>Click "Correct" if you spelled it right, or "Incorrect" if you made a mistake</li>
+                        <li>Keep track of your score and try to improve!</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- Glossary Terms -->
+            <div class="blog-grid" style="margin-top: 2rem;">
+                <div class="blog-card">
+                    <div style="display: flex; align-items: start;">
+                        <span style="background: #3b82f6; color: white; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; margin-right: 1rem; flex-shrink: 0;">A</span>
+                        <div>
+                            <h3 style="margin-bottom: 0.25rem;">Algorithm</h3>
+                            <p style="margin: 0; font-size: 0.9rem;">A set of steps used to solve a problem or perform a task in programming.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="blog-card">
+                    <div style="display: flex; align-items: start;">
+                        <span style="background: #3b82f6; color: white; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; margin-right: 1rem; flex-shrink: 0;">B</span>
+                        <div>
+                            <h3 style="margin-bottom: 0.25rem;">Backend</h3>
+                            <p style="margin: 0; font-size: 0.9rem;">The part of a software system that handles logic, database, and server-side processing.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="blog-card">
+                    <div style="display: flex; align-items: start;">
+                        <span style="background: #3b82f6; color: white; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; margin-right: 1rem; flex-shrink: 0;">C</span>
+                        <div>
+                            <h3 style="margin-bottom: 0.25rem;">Class</h3>
+                            <p style="margin: 0; font-size: 0.9rem;">A template used in object-oriented programming to create objects with specific attributes and methods.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="blog-card">
+                    <div style="display: flex; align-items: start;">
+                        <span style="background: #3b82f6; color: white; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; margin-right: 1rem; flex-shrink: 0;">D</span>
+                        <div>
+                            <h3 style="margin-bottom: 0.25rem;">Database</h3>
+                            <p style="margin: 0; font-size: 0.9rem;">An organized collection of data that can be accessed and managed electronically.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="blog-card">
+                    <div style="display: flex; align-items: start;">
+                        <span style="background: #3b82f6; color: white; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; margin-right: 1rem; flex-shrink: 0;">E</span>
+                        <div>
+                            <h3 style="margin-bottom: 0.25rem;">Entity</h3>
+                            <p style="margin: 0; font-size: 0.9rem;">A real-world object or concept that has data stored in a database.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="blog-card">
+                    <div style="display: flex; align-items: start;">
+                        <span style="background: #3b82f6; color: white; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; margin-right: 1rem; flex-shrink: 0;">F</span>
+                        <div>
+                            <h3 style="margin-bottom: 0.25rem;">Framework</h3>
+                            <p style="margin: 0; font-size: 0.9rem;">A collection of tools and libraries used to simplify and speed up software development.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="blog-card">
+                    <div style="display: flex; align-items: start;">
+                        <span style="background: #3b82f6; color: white; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; margin-right: 1rem; flex-shrink: 0;">G</span>
+                        <div>
+                            <h3 style="margin-bottom: 0.25rem;">Git</h3>
+                            <p style="margin: 0; font-size: 0.9rem;">A version control system used to track changes in source code.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="blog-card">
+                    <div style="display: flex; align-items: start;">
+                        <span style="background: #3b82f6; color: white; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; margin-right: 1rem; flex-shrink: 0;">H</span>
+                        <div>
+                            <h3 style="margin-bottom: 0.25rem;">HTML</h3>
+                            <p style="margin: 0; font-size: 0.9rem;">The standard language used to create and structure content on the web.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <a href="index.html" class="btn">
+                <i class="fas fa-home"></i> Return to Blog Home
+            </a>
+        </footer>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
